@@ -1,9 +1,11 @@
 import React from 'react';
 import {
   Input as AntInput,
+  Checkbox as AntCheckbox,
   InputProps as AntInputProps,
   PasswordProps as AntPasswordProps,
   TextAreaProps as AntTextAreaProps,
+  CheckboxProps as AntCheckboxProps,
 } from 'formik-antd';
 import { styled } from '@utils';
 import { StyledSystemStyles, styledSystemStyles } from '../shared';
@@ -29,3 +31,9 @@ const StyledTextArea = styled(AntInput.TextArea)(styledSystemStyles);
 const TextArea = (props: TextAreaProps) => <StyledTextArea {...props} />;
 
 Input.TextArea = TextArea;
+
+const StyledCheckbox = styled(AntCheckbox)(styledSystemStyles);
+
+const Checkbox = (props: AntCheckboxProps) => <StyledCheckbox {...props} />;
+
+Input.Checkbox = Checkbox;
