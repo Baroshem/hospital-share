@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Formik, FormikHelpers } from 'formik';
 import { Form, FormItem, Input, Checkbox, SubmitButton } from '@components/formik-antd';
 import { Title } from '@components/ant-design';
 import { Box } from '@components/atoms/Box';
+
 import { styled } from '@utils';
 
 const StyledUserOutlined = styled(UserOutlined)(({ theme }) => ({
   svg: {
-    fill: theme.colors.primary.main,
+    fill: '#1890ff',
   },
 }));
 
 const StyledLockOutlined = styled(LockOutlined)(({ theme }) => ({
   svg: {
-    fill: theme.colors.primary.main,
+    fill: '#1890ff',
   },
 }));
 
-export const SignIn = () => {
+export const SignInComponent = () => {
   return (
     <Form>
       <Box display="flex" width="100%" justifyContent="center" mb={3}>
@@ -53,5 +55,29 @@ export const SignIn = () => {
         </Box>
       </FormItem>
     </Form>
+  );
+};
+
+type FormValues = {
+  username: string;
+  password: string;
+  remember: boolean;
+};
+
+export const SignInContainer = () => {
+  const initialValues: FormValues = {
+    username: '',
+    password: '',
+    remember: true,
+  };
+
+  const handleSubmit = (values: FormValues, helpers: FormikHelpers<FormValues>) => {
+    console.log(values);
+    helpers.setSubmitting(false);
+  };
+  return (
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <SignInComponent />
+    </Formik>
   );
 };
