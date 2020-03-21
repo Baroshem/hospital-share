@@ -96,6 +96,7 @@ const breakpoints = {
 };
 
 export const theme = {
+  spacing: [],
   colors,
   fonts,
   fontSizes,

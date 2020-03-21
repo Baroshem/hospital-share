@@ -26,7 +26,7 @@ type Props = Omit<
   SpaceProps & ColorProps & LayoutProps & BorderProps & TypographyProps & FlexboxProps & ShadowProps & GridProps,
   'color'
 > & {
-  color: ThemeColors;
+  color?: ThemeColors;
 };
 
 export const Box = styled.div<Props>(
