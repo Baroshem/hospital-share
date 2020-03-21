@@ -17,6 +17,7 @@
     "@types/react-dom": "^16.9.5",
     "@types/styled-system": "^5.1.9",
     "antd": "^4.0.3",
+    "axios": "^0.19.2",
     "craco-alias": "^2.1.1",
     "craco-antd": "^1.14.1",
     "emotion-theming": "^10.0.27",

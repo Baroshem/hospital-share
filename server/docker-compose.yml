@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: hack-the-crisis
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
