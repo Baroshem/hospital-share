@@ -28,6 +28,7 @@ export type ThemeColors =
   | 'error.dark'
   | 'background.body'
   | 'background.component'
+  | 'background.light'
   | 'border.base'
   | 'border.split'
   | 'text.heading'

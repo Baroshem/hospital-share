@@ -39,6 +39,7 @@ const colors = {
   background: {
     body: '#fff',
     component: '#fff',
+    light: '#f5f5f5',
   },
   border: {
     base: '#d9d9d9',
