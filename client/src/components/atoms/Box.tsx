@@ -20,7 +20,7 @@ import {
   GridProps,
 } from 'styled-system';
 import styled from '@emotion/styled';
-import { ThemeColors } from '@typings';
+import { ThemeColors } from '@services';
 
 type Props = Omit<
   SpaceProps & ColorProps & LayoutProps & BorderProps & TypographyProps & FlexboxProps & ShadowProps & GridProps,

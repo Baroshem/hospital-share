@@ -1,4 +1,4 @@
-export type Theme = typeof import('@constants').theme;
+export type ThemeType = typeof import('./theme').theme;
 
 export type ThemeColors =
   | 'primary.background'

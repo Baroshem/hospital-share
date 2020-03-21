@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from 'emotion-theming';
-
 import { FC } from '@typings';
-import { theme } from '@constants';
 import store from '@store/store';
+import { Theme, Translation, Validation } from './services';
 
 const Providers: FC = ({ children }) => (
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
-  </Provider>
+  <Suspense fallback={null}>
+    <Provider store={store}>
+      <Theme.Provider>
+        <Translation.Provider>
+          <Validation.Provider>{children}</Validation.Provider>
+        </Translation.Provider>
+      </Theme.Provider>
+    </Provider>
+  </Suspense>
 );
 
 export default Providers;

@@ -5,16 +5,14 @@ import { SignUp as SignUpForm } from '@components/forms';
 import { Title } from '@components/ant-design';
 
 type FormValues = {
-  username: string;
+  email: string;
   password: string;
-  remember: boolean;
 };
 
 const SignUpContainer = () => {
   const initialValues: FormValues = {
-    username: '',
+    email: '',
     password: '',
-    remember: true,
   };
 
   const handleSubmit = (values: FormValues, helpers: FormikHelpers<FormValues>) => {

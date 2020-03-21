@@ -1,4 +1,4 @@
 import emotionStyled, { CreateStyled } from '@emotion/styled';
-import { Theme } from '@typings';
+import { ThemeType } from '@services';
 
-export const styled: CreateStyled<Theme> = emotionStyled;
+export const styled: CreateStyled<ThemeType> = emotionStyled;

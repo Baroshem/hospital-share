@@ -17,6 +17,9 @@ module.exports = {
   eslint: {
     enable: false,
   },
+  typescript: {
+    enableTypeChecking: false,
+  },
   babel: {
     plugins: [['emotion', { sourceMap: true }]],
   },
