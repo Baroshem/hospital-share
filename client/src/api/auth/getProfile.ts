@@ -4,4 +4,4 @@ import { fetch } from '../fetch';
 
 export type GetProfileResponse = AxiosResponse<User | ''>;
 
-export const getProfile = (): Promise<GetProfileResponse> => fetch.get('/auth/profile');
+export const getProfileRequest = (): Promise<GetProfileResponse> => fetch.get('/auth/profile');

@@ -13,4 +13,4 @@ export type PostUserPayload = {
 
 export type PostUserResponse = AxiosResponse<string>;
 
-export const postUser = (payload: PostUserPayload): Promise<PostUserResponse> => fetch.post('/users', payload);
+export const postUserRequest = (payload: PostUserPayload): Promise<PostUserResponse> => fetch.post('/users', payload);

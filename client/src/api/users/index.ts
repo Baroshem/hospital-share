@@ -1,5 +1,1 @@
-import { postUser } from './postUser';
-
-export const auth = {
-  postUser: postUser,
-};
+export * from './postUser';

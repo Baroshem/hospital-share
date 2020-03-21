@@ -8,4 +8,4 @@ export type LoginPayload = {
 
 export type LoginResponse = AxiosResponse<boolean>;
 
-export const login = (payload: LoginPayload): Promise<LoginResponse> => fetch.post('/auth/login', payload);
+export const loginRequest = (payload: LoginPayload): Promise<LoginResponse> => fetch.post('/auth/login', payload);

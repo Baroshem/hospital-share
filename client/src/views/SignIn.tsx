@@ -6,6 +6,7 @@ import { Form, FormItem, Input, Checkbox, SubmitButton } from '@components/formi
 import { Title, Paragraph } from '@components/ant-design';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Theme, Translation, Schema, Validation } from '@services';
+import { useAuthActions } from '@store/auth';
 
 type FormValues = {
   email: string;
@@ -50,6 +51,7 @@ export const SignInComponent = () => {
 const SignInContainer = () => {
   const { yup } = Validation.use();
   const { t } = Translation.use('main');
+  const { login } = useAuthActions();
 
   const initialValues: FormValues = {
     email: '',
@@ -69,7 +71,7 @@ const SignInContainer = () => {
   });
 
   const handleSubmit = (values: FormValues, helpers: FormikHelpers<FormValues>) => {
-    console.log(values);
+    login(values);
     helpers.setSubmitting(false);
   };
 

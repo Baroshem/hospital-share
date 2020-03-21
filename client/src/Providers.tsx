@@ -6,13 +6,13 @@ import { Theme, Translation, Validation } from './services';
 
 const Providers: FC = ({ children }) => (
   <Suspense fallback={null}>
-    <Provider store={store}>
-      <Theme.Provider>
-        <Translation.Provider>
+    <Translation.Provider>
+      <Provider store={store}>
+        <Theme.Provider>
           <Validation.Provider>{children}</Validation.Provider>
-        </Translation.Provider>
-      </Theme.Provider>
-    </Provider>
+        </Theme.Provider>
+      </Provider>
+    </Translation.Provider>
   </Suspense>
 );
 
