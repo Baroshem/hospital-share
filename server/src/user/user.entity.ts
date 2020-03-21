@@ -44,11 +44,17 @@ export class User {
   )
   company: Company;
 
+  @Column({ nullable: true })
+  companyId: string;
+
   @ManyToOne(
     () => Hospital,
     hospital => hospital.users,
   )
   hospital: Hospital;
+
+  @Column({ nullable: true })
+  hospitalId: string;
 
   @OneToMany(
     () => Transaction,

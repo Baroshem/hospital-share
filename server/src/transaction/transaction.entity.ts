@@ -38,11 +38,17 @@ export class Transaction {
   )
   equipmentItem: EquipmentItem;
 
+  @Column({ nullable: true })
+  equimentItemId: string;
+
   @ManyToOne(
     () => User,
     user => user.transactions,
   )
   user: User;
+
+  @Column({ nullable: true })
+  userId: string;
 
   @ManyToOne(
     () => Company,
@@ -50,9 +56,15 @@ export class Transaction {
   )
   company: Company;
 
+  @Column({ nullable: true })
+  companyId: string;
+
   @ManyToOne(
     () => Hospital,
     hospital => hospital.transactions,
   )
   hospital: Hospital;
+
+  @Column({ nullable: true })
+  hospitalId: string;
 }

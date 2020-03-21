@@ -19,9 +19,15 @@ export class HelpRequest {
   )
   equipmentItem: EquipmentItem;
 
+  @Column({ nullable: true })
+  equipmentItemId: string;
+
   @ManyToOne(
     () => Hospital,
     hospital => hospital.helpRequests,
   )
-  createdBy: Hospital;
+  hospital: Hospital;
+
+  @Column({ nullable: true })
+  hospitalId: string;
 }

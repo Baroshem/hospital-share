@@ -26,15 +26,24 @@ export class HelpOffer {
   )
   equipmentItem: EquipmentItem;
 
+  @Column({ nullable: true })
+  equipmentItemId: string;
+
   @ManyToOne(
     () => User,
     user => user.helpOffers,
   )
   user: User;
 
+  @Column({ nullable: true })
+  userId: string;
+
   @ManyToOne(
     () => Company,
     company => company.helpOffes,
   )
   company: Company;
+
+  @Column({ nullable: true })
+  companyId: string;
 }

@@ -37,7 +37,7 @@ export class Hospital {
 
   @OneToMany(
     () => HelpRequest,
-    helpRequest => helpRequest.createdBy,
+    helpRequest => helpRequest.hospital,
   )
   helpRequests: HelpRequest[];
 

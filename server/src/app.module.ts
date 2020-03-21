@@ -10,6 +10,7 @@ import { EquipmentItemModule } from './equipment-item/equipment-item.module';
 import { TransactionModule } from './transaction/transaction.module';
 import { HelpOfferModule } from './help-offer/help-offer.module';
 import { HelpRequestModule } from './help-request/help-request.module';
+import { MailerModule } from './mailer/mailer.module';
 
 @Module({
   imports: [
@@ -20,6 +21,8 @@ import { HelpRequestModule } from './help-request/help-request.module';
           .valid('development', 'test', 'production')
           .default('development'),
         PORT: Joi.number().required(),
+        SERVER_URL: Joi.string().required(),
+        CLIENT_URL: Joi.string().required(),
         DB_HOST: Joi.string().required(),
         DB_PORT: Joi.number().required(),
         DB_NAME: Joi.string().required(),
@@ -28,6 +31,8 @@ import { HelpRequestModule } from './help-request/help-request.module';
         JWT_SECRET: Joi.string().required(),
         TOKEN_COOKIE_NAME: Joi.string().required(),
         TOKEN_PREFIX: Joi.string().required(),
+        SENDGRID_KEY: Joi.string().required(),
+        EMAIL_SECRET: Joi.string().required(),
       }),
     }),
     TypeOrmModule.forRootAsync({
@@ -51,6 +56,7 @@ import { HelpRequestModule } from './help-request/help-request.module';
     TransactionModule,
     HelpOfferModule,
     HelpRequestModule,
+    MailerModule,
   ],
 })
 export class AppModule {}

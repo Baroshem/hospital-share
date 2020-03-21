@@ -3,6 +3,16 @@ import { Transaction } from 'src/transaction/transaction.entity';
 import { HelpOffer } from 'src/help-offer/help-offer.entity';
 import { HelpRequest } from 'src/help-request/help-request.entity';
 
+export enum EquipmentItemCategory {
+  'CLOTHING' = 'CLOTHING',
+  'CLEANING' = 'CLEANING',
+  'DEVICES' = 'DEVICES',
+  'BEEDING' = 'BEEDING',
+  'FOOD' = 'FOOD',
+  'COSMETICS' = 'COSMETICS',
+  'OTHERS' = 'OTHERS',
+}
+
 @Entity()
 export class EquipmentItem {
   @PrimaryGeneratedColumn('uuid')
@@ -10,6 +20,15 @@ export class EquipmentItem {
 
   @Column({ unique: true })
   name: string;
+
+  @Column({ unique: true })
+  nameReg: string;
+
+  @Column({
+    type: 'enum',
+    enum: EquipmentItemCategory,
+  })
+  category: EquipmentItemCategory;
 
   @Column({ default: false })
   custom: boolean;
