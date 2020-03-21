@@ -9,14 +9,12 @@ import { AppLayout } from '@components/AppLayout';
 
 const Routes = () => (
   <AppLayout>
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/sign-in" component={SignIn} />
-        <Route path="/sign-up" component={SignUp} />
-        <Route component={Page404} />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/sign-in" component={SignIn} />
+      <Route path="/sign-up" component={SignUp} />
+      <Route component={Page404} />
+    </Switch>
   </AppLayout>
 );
 

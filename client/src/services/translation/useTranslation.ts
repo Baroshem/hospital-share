@@ -6,7 +6,7 @@ export const useTranslation = <T extends keyof Translations>(
   ns: T,
   options?: UseTranslationOptions,
 ): {
-  t: (key: Translations[T], options?: TOptionsBase | Record<string, string | number>) => string;
+  t: (key: Translations[T] | any, options?: TOptionsBase | Record<string, string | number>) => string;
   i18n: ReturnType<typeof getI18n>;
 } => {
   return i18nUseTranslation(ns, options);
