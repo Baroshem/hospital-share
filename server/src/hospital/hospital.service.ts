@@ -8,6 +8,7 @@ import { UserService } from 'src/user/user.service';
 import { CreateHospitalDto } from './dto/create-hospital.dto';
 import { CreateHospitalAssignmentDto } from './dto/create-hospital-assignment.dto';
 import { Hospital } from './hospital.entity';
+import { UpdateHospitalDto } from './dto/update-hospital.dto';
 
 @Injectable()
 export class HospitalService {
@@ -25,6 +26,35 @@ export class HospitalService {
 
   create(createHospitalDto: CreateHospitalDto) {
     return this.hospitalRepository.save(createHospitalDto);
+  }
+
+  getAll() {
+    return this.hospitalRepository.find();
+  }
+
+  async update(id: string, updateHospitalDto: UpdateHospitalDto) {
+    const hospitalRecord = await this.findById(id);
+
+    if (!hospitalRecord) {
+      throw new NotFoundException();
+    }
+
+    return this.hospitalRepository.save({
+      ...hospitalRecord,
+      ...updateHospitalDto,
+    });
+  }
+
+  async delete(id: string) {
+    const hospitalRecord = await this.findById(id);
+
+    if (!hospitalRecord) {
+      throw new NotFoundException();
+    }
+
+    await this.hospitalRepository.delete({ id });
+
+    return hospitalRecord;
   }
 
   async createAssignment(createHospitalAssignmentDto: CreateHospitalAssignmentDto) {

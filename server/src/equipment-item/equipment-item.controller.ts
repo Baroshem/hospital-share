@@ -18,12 +18,12 @@ export class EquipmentItemController {
   }
 
   @Put(':id')
-  update(@Param() id: string, @Body() updateEquipmentItemDto: UpdateEquipmentItemDto) {
+  update(@Param('id') id: string, @Body() updateEquipmentItemDto: UpdateEquipmentItemDto) {
     return this.equipmentItemService.update(id, updateEquipmentItemDto);
   }
 
   @Delete(':id')
-  delete(@Param() id: string) {
+  delete(@Param('id') id: string) {
     return this.equipmentItemService.delete(id);
   }
 }
