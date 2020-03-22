@@ -8,12 +8,12 @@ import { Header } from '@components/organisms';
 import { styled } from '@utils';
 
 const StyledLayout = styled(Layout)({
-  width: '100vw',
-  height: '100vh',
-  overflow: 'hidden',
+  width: '100%',
+  maxWidth: '100%',
+  height: '100%',
 
   '& .ant-layout-content': {
-    minHeight: '100vh',
+    height: '100%',
     width: '100%',
   },
 });

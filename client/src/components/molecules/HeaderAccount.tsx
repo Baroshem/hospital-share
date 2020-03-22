@@ -1,12 +1,12 @@
 import React from 'react';
 import { styled } from '@utils';
 import { Avatar } from '@components/ant-design';
-
+import { Link } from "react-router-dom";
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { useAuthState } from '@store/auth';
 
-const Link = styled.a({
+const StyledLink = styled(Link)({
   color: 'black',
   margin: '0 10px',
 });
@@ -37,16 +37,16 @@ export const Account = () => {
 
   return !user.data ? (
     <>
-      <Link href="">O Projekcie</Link>
-      <Link href="">Zaloguj się</Link>
-      <Link href="">Zarejestruj się</Link>
+      <StyledLink to="/about" >O Projekcie</StyledLink>
+      <StyledLink to="/sign-in">Zaloguj się</StyledLink>
+      <StyledLink to="/sign-up">Zarejestruj się</StyledLink>
     </>
   ) : (
     <>
-      <Link href="">O Projekcie</Link>
+      <StyledLink to="/about">O Projekcie</StyledLink>
       <Avatar />
       <Dropdown overlay={menu}>
-        <Link  onClick={e => e.preventDefault()}>
+        <Link to="/">
           User Name <DownOutlined />
         </Link>
       </Dropdown>
