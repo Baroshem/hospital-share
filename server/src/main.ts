@@ -10,7 +10,7 @@ async function bootstrap() {
   const reflector = app.get(Reflector);
   const configService = app.get(ConfigService);
 
-  app.enableCors({ credentials: true, origin: configService.get('CLIENT_URL') });
+  app.enableCors({ credentials: true, origin: configService.get('CLIENT_URL').split('|') });
   app.use(cookieParser());
   app.use(helmet());
 
