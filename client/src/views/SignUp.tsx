@@ -8,7 +8,7 @@ const { Step } = Steps;
 
 const SignUpContainer = () => {
   return (
-    <div>
+    <Box>
       <Box display="flex" width="100%" justifyContent="center" mt="80px">
         <Title>LOGO PLATFORMY</Title>
       </Box>
@@ -19,10 +19,10 @@ const SignUpContainer = () => {
         </Steps>
       </Box>
 
-      <Box margin="auto" width={650} height={820}>
+      <Box margin="auto" width={650} mb="80px">
         <SignUpForm />
       </Box>
-    </div>
+    </Box>
   );
 };
 

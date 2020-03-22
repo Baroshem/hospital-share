@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@utils';
 import { Button } from '@components/ant-design';
+import { Link } from "react-router-dom";
 
 import { Account } from '@components/molecules/HeaderAccount'
 
@@ -13,13 +14,14 @@ const Wrapper = styled.div({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  backgroundColor: 'white'
+  backgroundColor: 'white',
+  zIndex: 100
 });
 
 export const Header = () => {
   return (
     <Wrapper>
-      <div>LOGO</div>
+      <Link to="/">LOGO</Link>
       <div>
         <Account />
         <Button type="primary">Utwórz zgłoszenie</Button>
