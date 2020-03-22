@@ -4,7 +4,8 @@ import { User } from '@models';
 import { AppThunk } from '@typings';
 import { LoginPayload, loginRequest, logoutRequest, GetProfileResponse, getProfileRequest } from '@api/auth';
 import { useDispatch, useSelector } from '@hooks';
-import { message } from 'antd';
+import { PostUserResponse, postUserRequest, PostUserPayload } from '@api/users';
+import { PostCreateAssignmentPayload, postCreateAssignmentRequest } from '@api/hospitals';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -20,6 +21,19 @@ const authSlice = createSlice({
       state.error = null;
     },
     fetchProfileFailure: (state, action: PayloadAction<string>) => {
+      state.status = 'failure';
+      state.error = action.payload;
+    },
+    createUserRequest: state => {
+      state.status = 'loading';
+      state.error = null;
+    },
+    createUserSuccess: (state, action: PayloadAction<PostUserResponse['data']>) => {
+      state.status = 'success';
+      state.data = action.payload || null;
+      state.error = null;
+    },
+    createUserFailure: (state, action: PayloadAction<string>) => {
       state.status = 'failure';
       state.error = action.payload;
     },
@@ -59,30 +73,47 @@ const fetchProfile = (): AppThunk => async dispatch => {
 };
 
 const login = (payload: LoginPayload): AppThunk => async dispatch => {
-  message.loading('Logging in');
   dispatch(authSlice.actions.loginRequest());
 
   try {
     await loginRequest(payload);
-    message.success('Login successful');
     dispatch(fetchProfile());
   } catch (ex) {
-    message.warning('Login unsuccessful');
     dispatch(authSlice.actions.loginFailure(ex.message));
   }
 };
 
 const logout = (): AppThunk => async dispatch => {
-  message.loading('Logging out');
   dispatch(authSlice.actions.logoutRequest());
 
   try {
     await logoutRequest();
-    message.success('You has been logged out succesfully');
     dispatch(authSlice.actions.logoutSuccess());
   } catch (ex) {
-    message.success('Loging out failed');
     dispatch(authSlice.actions.logoutFailure(ex.message));
+  }
+};
+
+const createHospitalAssignment = (payload: PostCreateAssignmentPayload): AppThunk => async () => {
+  await postCreateAssignmentRequest(payload);
+};
+
+const createUser = (postUserPayload: PostUserPayload, hospitalId?: string): AppThunk => async dispatch => {
+  dispatch(authSlice.actions.logoutRequest());
+
+  try {
+    const response = await postUserRequest(postUserPayload);
+
+    const { email, password } = postUserPayload;
+
+    dispatch(authSlice.actions.createUserSuccess(response.data));
+    dispatch(login({ email, password }));
+
+    if (hospitalId) {
+      dispatch(createHospitalAssignment({ userId: response.data.id, hospitalId }));
+    }
+  } catch (ex) {
+    dispatch(authSlice.actions.createUserFailure(ex.message));
   }
 };
 
@@ -93,6 +124,8 @@ export const useAuthActions = () => {
     fetchProfile: () => dispatch(fetchProfile()),
     login: (payload: LoginPayload) => dispatch(login(payload)),
     logout: () => dispatch(logout()),
+    createUser: (postUserPayload: PostUserPayload, hospitalId?: string) =>
+      dispatch(createUser(postUserPayload, hospitalId)),
   };
 };
 

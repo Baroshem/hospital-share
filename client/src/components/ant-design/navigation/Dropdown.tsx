@@ -4,7 +4,10 @@ import { DropDownProps as AntDropdownProps } from 'antd/lib/dropdown';
 import { styled } from '@utils';
 import { StyledSystemStyles, styledSystemStyles } from '../../shared';
 
-export type DropDownProps = AntDropdownProps & StyledSystemStyles;
+export type DropDownProps = AntDropdownProps &
+  StyledSystemStyles & {
+    children: any;
+  };
 
 const StyledDropdown = styled(AntDropdown)(styledSystemStyles);
 

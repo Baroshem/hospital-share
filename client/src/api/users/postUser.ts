@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { fetch } from '../fetch';
+import { User } from '@models';
 
 export type PostUserPayload = {
   fullName: string;
@@ -11,6 +12,6 @@ export type PostUserPayload = {
   shareContactData: boolean;
 };
 
-export type PostUserResponse = AxiosResponse<string>;
+export type PostUserResponse = AxiosResponse<User>;
 
 export const postUserRequest = (payload: PostUserPayload): Promise<PostUserResponse> => fetch.post('/users', payload);

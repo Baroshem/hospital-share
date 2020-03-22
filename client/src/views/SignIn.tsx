@@ -1,11 +1,12 @@
 import React from 'react';
 import { Formik, FormikHelpers } from 'formik';
 import { Box } from '@components/atoms/Box';
-import { Form, FormItem, Input, Checkbox, SubmitButton } from '@components/formik-antd';
-import { Title, Paragraph } from '@components/ant-design';
+import { Form, FormItem, Input } from '@components/formik-antd';
+import { Title, Paragraph, Button } from '@components/ant-design';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Theme, Translation, Schema, Validation } from '@services';
-import { useAuthActions } from '@store/auth';
+import { useAuthActions, useAuthState } from '@store/auth';
+import { Redirect } from 'react-router-dom';
 
 type FormValues = {
   email: string;
@@ -23,10 +24,10 @@ export const SignInComponent = () => {
       <Box textAlign="center" mb={32}>
         <Title level={4}>{t('Log into your account')}</Title>
       </Box>
-      <FormItem name="email" mb={8}>
+      <FormItem name="email" mb={32}>
         <Input name="email" size="large" prefix={<UserOutlined style={iconStyle} />} placeholder={t('E-mail')} />
       </FormItem>
-      <FormItem name="password" mb={8}>
+      <FormItem name="password" mb={32}>
         <Input.Password
           name="password"
           size="large"
@@ -35,9 +36,9 @@ export const SignInComponent = () => {
           placeholder={t('Password')}
         />
       </FormItem>
-      <SubmitButton width="100%" height="40px" type="primary" htmlType="submit">
+      <Button width="100%" height="40px" type="primary" htmlType="submit">
         {t('Log in')}
-      </SubmitButton>
+      </Button>
       <Box mt={24} textAlign="center">
         <Paragraph>
           {t("Don't have an account?")} <a href="">{t('Register')}</a>
@@ -51,6 +52,11 @@ const SignInContainer = () => {
   const { yup } = Validation.use();
   const { t } = Translation.use('main');
   const { login } = useAuthActions();
+  const user = useAuthState();
+
+  if (user.data) {
+    return <Redirect to="/" />;
+  }
 
   const initialValues: FormValues = {
     email: '',

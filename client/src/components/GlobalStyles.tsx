@@ -152,6 +152,10 @@ const createGlobalStyles = (theme: ThemeType) => css`
   div.ant-typography {
     margin-bottom: 0;
   }
+
+  .ant-form-vertical .ant-form-item-label {
+    padding-bottom: 0;
+  }
 `;
 
 export const GlobalStyles = withTheme(({ theme }) => <Global styles={createGlobalStyles(theme)} />);

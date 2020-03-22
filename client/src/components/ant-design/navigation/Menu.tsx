@@ -1,20 +1,21 @@
 import React from 'react';
 import { Menu as AntMenu } from 'antd';
 import { MenuProps as AntMenuProps } from 'antd/lib/menu';
-import AntMenuItem, { MenuItemProps as AntItemProps } from 'antd/lib/menu/MenuItem';
-import { StyledSystemStyles, styledSystemStyles } from '../../shared';
+import { MenuItemProps as AntItemProps } from 'antd/lib/menu/MenuItem';
 import { styled } from '@utils';
+import { StyledSystemStyles, styledSystemStyles } from '../../shared';
 
-export type ItemProps = AntItemProps & StyledSystemStyles;
-
-const StyledItem = styled(AntMenuItem)(styledSystemStyles);
-
-export const MenuItem = (props: ItemProps) => <StyledItem {...props} />;
-
-export type MenuProps = Omit<AntMenuProps, 'theme'> & StyledSystemStyles;
+export type MenuProps = Omit<AntMenuProps, 'theme'> &
+  StyledSystemStyles & {
+    children: any;
+  };
 
 const StyledMenu = styled(AntMenu)(styledSystemStyles);
 
-export const Menu = (props: MenuProps) => (<StyledMenu {...props} />) as any;
+export const Menu = (props: MenuProps) => <StyledMenu {...props} />;
 
-Menu.Item = AntMenu.Item;
+export type ItemProps = AntItemProps & StyledSystemStyles;
+
+const StyledItem = styled(AntMenu.Item)(styledSystemStyles);
+
+Menu.Item = (props: ItemProps) => <StyledItem {...props} />;

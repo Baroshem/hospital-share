@@ -13,4 +13,4 @@ export const Select = (props: SelectProps) => <StyledSelect {...props} />;
 
 const StyledOption = styled(AntOption)(styledSystemStyles);
 
-export const Option = (props: any) => <StyledOption {...props} />;
+Select.Option = (props: any) => <StyledOption {...props} />;

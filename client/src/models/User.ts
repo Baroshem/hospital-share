@@ -6,4 +6,6 @@ export interface User {
   email: string;
   terms: boolean;
   shareContactData: boolean;
+  companyId?: string;
+  hospitalId?: string;
 }

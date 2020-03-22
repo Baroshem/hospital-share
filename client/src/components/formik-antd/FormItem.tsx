@@ -8,7 +8,3 @@ export type FormItemProps = AntFormItemProps & StyledSystemStyles;
 const StyledFormItem = styled(AntFormItem)(styledSystemStyles);
 
 export const FormItem = (props: FormItemProps) => <StyledFormItem {...props} />;
-
-FormItem.defaultProps = {
-  help: ' ',
-};

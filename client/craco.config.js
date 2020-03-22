@@ -4,7 +4,9 @@ const CracoAlias = require('craco-alias');
 
 module.exports = {
   plugins: [
-    { plugin: CracoAntDesignPlugin },
+    {
+      plugin: CracoAntDesignPlugin,
+    },
     {
       plugin: CracoAlias,
       options: {
