@@ -25,6 +25,14 @@ export class UserService {
     return this.usersRepository.findOne({ id });
   }
 
+  findAllByFullName(fullName: string) {
+    return this.usersRepository.find({ fullName })
+  }
+
+  findAll() {
+    return this.usersRepository.find();
+  }
+
   create(createUserDto: CreateUserDto) {
     return this.usersRepository.save(createUserDto);
   }

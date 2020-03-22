@@ -19,6 +19,11 @@ export class CompanyController {
     return this.companyService.getSingle(id);
   }
 
+  @Get('/:name/all')
+  getAllByName(@Param('name') name: string) {
+    return this.companyService.findAllByName(name);
+  }
+
   @Post()
   createCompany(@Body() createCompanyDto: CreateCompanyDto) {
     return this.companyService.createCompany(createCompanyDto);

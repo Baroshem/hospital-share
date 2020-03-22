@@ -24,6 +24,10 @@ export class EquipmentItemService {
     return this.equipmentItemRepository.find();
   }
 
+  findAllByName(name: string) {
+    return this.equipmentItemRepository.find({ name })
+  }
+
   async update(id: string, updateEquipmentItemDto: UpdateEquipmentItemDto) {
     const itemRecord = await this.findById(id);
 

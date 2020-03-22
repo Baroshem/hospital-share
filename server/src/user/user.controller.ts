@@ -8,9 +8,19 @@ import { ConfigService } from '@nestjs/config';
 export class UserController {
   constructor(private readonly userService: UserService, private configService: ConfigService) {}
 
+  @Get()
+  getAll() {
+    return this.userService.findAll();
+  }
+
   @Get('/:id')
   getSingle(@Param('id') id: string) {
     return this.userService.findById(id);
+  }
+
+  @Get('/:fullName/all')
+  getAllByFullName(@Param('fullName') fullName: string) {
+    return this.userService.findAllByFullName(fullName);
   }
 
   @Post()

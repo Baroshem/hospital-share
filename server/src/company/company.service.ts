@@ -25,6 +25,10 @@ export class CompanyService {
     return this.companyRepository.find();
   }
 
+  findAllByName(name: string) {
+    return this.companyRepository.find({ name })
+  }
+
   async getSingle(id: string) {
     return this.companyRepository.findOne({ id });
   }

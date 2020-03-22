@@ -24,6 +24,10 @@ export class HospitalService {
     return this.hospitalRepository.findOne({ id });
   }
 
+  findAllByName(name: string) {
+    return this.hospitalRepository.find({ name })
+  }
+
   create(createHospitalDto: CreateHospitalDto) {
     return this.hospitalRepository.save(createHospitalDto);
   }

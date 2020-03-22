@@ -25,6 +25,11 @@ export class HospitalController {
     return this.hospitalService.findById(id);
   }
 
+  @Get('/:name/all')
+  getAllByName(@Param('name') name: string) {
+    return this.hospitalService.findAllByName(name);
+  }
+
   @Put(':id')
   update(@Param('id') id: string, @Body() updateHospitalDto: UpdateHospitalDto) {
     return this.hospitalService.update(id, updateHospitalDto);
