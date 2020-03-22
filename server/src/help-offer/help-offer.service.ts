@@ -12,6 +12,14 @@ export class HelpOfferService {
     private readonly helpOfferRepository: Repository<HelpOffer>,
   ) {}
 
+  findById(id: string) {
+    return this.helpOfferRepository.findOne({ id });
+  }
+
+  getAll() {
+    return this.helpOfferRepository.find();
+  }
+
   createHelpOffer(createHelpOfferDto: CreateHelpOfferDto) {
     return this.helpOfferRepository.save(createHelpOfferDto)
   }

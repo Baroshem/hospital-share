@@ -1,11 +1,23 @@
-import { Controller, Body, Post, Put, Param, Delete } from '@nestjs/common';
+import { Response } from 'express';
+import { Controller, Body, Post, Put, Param, Delete, Get, Res } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { CompanyService } from './company.service';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
 
 @Controller('company')
 export class CompanyController {
-  constructor(private readonly companyService: CompanyService) {}
+  constructor(private readonly companyService: CompanyService, private configService: ConfigService) {}
+
+  @Get()
+  getAll() {
+    return this.companyService.getAll();
+  }
+
+  @Get('/:id')
+  getSingle(@Param('id') id: string) {
+    return this.companyService.getSingle(id);
+  }
 
   @Post()
   createCompany(@Body() createCompanyDto: CreateCompanyDto) {
@@ -22,5 +34,16 @@ export class CompanyController {
   @Delete('/:id')
   deleteCompany(@Param('id') id: string) {
     return this.companyService.deleteCompany(id);
+  }
+
+  @Post('create-confirmation')
+  createConfirmation(@Body() id: string) {
+    return this.companyService.createConfirmation(id);
+  }
+
+  @Get('confirm/:token')
+  async confirmCompany(@Param('token') token: string, @Res() res: Response) {
+    await this.companyService.confirmCompany(token);
+    return res.status(200).redirect(`${this.configService.get('CLIENT_URL')}/confirmation-success`)
   }
 }

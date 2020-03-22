@@ -12,6 +12,14 @@ export class HelpRequestService {
     private readonly helpRequestRepository: Repository<HelpRequest>,
   ) {}
 
+  findById(id: string) {
+    return this.helpRequestRepository.findOne({ id });
+  }
+
+  getAll() {
+    return this.helpRequestRepository.find();
+  }
+
   createHelpRequest(createHelpRequestDto: CreateHelpRequestDto) {
     return this.helpRequestRepository.save(createHelpRequestDto);
   }

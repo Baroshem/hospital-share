@@ -20,6 +20,11 @@ export class HospitalController {
     return this.hospitalService.getAll();
   }
 
+  @Get('/:id')
+  getSingle(@Param('id') id: string) {
+    return this.hospitalService.findById(id);
+  }
+
   @Put(':id')
   update(@Param('id') id: string, @Body() updateHospitalDto: UpdateHospitalDto) {
     return this.hospitalService.update(id, updateHospitalDto);

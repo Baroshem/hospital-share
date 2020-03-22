@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Put, Delete, Param } from '@nestjs/common';
+import { Controller, Post, Body, Put, Delete, Param, Get } from '@nestjs/common';
 import { HelpRequestService } from './help-request.service';
 import { CreateHelpRequestDto } from './dto/create-help-request.dto';
 import { UpdateHelpRequestDto } from './dto/update-help-request.dto';
@@ -10,6 +10,16 @@ export class HelpRequestController {
   @Post()
   createHelpRequest(@Body() createHelpRequestDto: CreateHelpRequestDto) {
     return this.helpRequestService.createHelpRequest(createHelpRequestDto);
+  }
+
+  @Get()
+  getAll() {
+    return this.helpRequestService.getAll();
+  }
+
+  @Get('/:id')
+  getSingle(@Param('id') id: string) {
+    return this.helpRequestService.findById(id);
   }
 
   @Put('/:id')

@@ -17,6 +17,11 @@ export class EquipmentItemController {
     return this.equipmentItemService.getAll();
   }
 
+  @Get('/:id')
+  getSingle(@Param('id') id: string) {
+    return this.equipmentItemService.findById(id);
+  }
+
   @Put(':id')
   update(@Param('id') id: string, @Body() updateEquipmentItemDto: UpdateEquipmentItemDto) {
     return this.equipmentItemService.update(id, updateEquipmentItemDto);

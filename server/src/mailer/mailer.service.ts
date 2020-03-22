@@ -21,4 +21,19 @@ export class MailerService {
 
     sendgrid.send(message);
   }
+
+  sendConfirmation(token: string, to: string, type: string) {
+    const SERVER_URL = this.configService.get('SERVER_URL');
+
+
+    const message = {
+      to,
+      from: 'test@example.com',
+      subject: 'Sending with SendGrid is Fun',
+      text: 'and easy to do anywhere, even with Node.js',
+      html: `<a href="${SERVER_URL}/confirm/${type}/${token}">Click me to confirm</a>`,
+    };
+
+    sendgrid.send(message);
+  }
 }
