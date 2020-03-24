@@ -51,8 +51,8 @@ export const Header = () => {
   return (
     <Wrapper>
       <Box display="flex" alignItems="center">
-        <Box mr={40}>APP NAME</Box>
-        <RouterLink to="/about">O Projekcie</RouterLink>
+        <RouterLink to="/"><Box mr={40}>HospitalShare</Box></RouterLink>
+        <RouterLink to="/about">About</RouterLink>
       </Box>
       <Box display="flex" alignItems="center">
         {user.data ? (

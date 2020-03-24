@@ -89,6 +89,7 @@ type AccountType = 'business' | 'hospital' | 'person';
 const SignUpContainer = () => {
   const [accountType, setAccountType] = useQueryParam('type', StringParam);
   const [currentStep = 0, setCurrentStep] = useQueryParam('step', NumberParam);
+  const { t } = Translation.use('main');
 
   const handleAccountTypeSelect = (type: AccountType) => {
     setAccountType(type);
@@ -98,12 +99,20 @@ const SignUpContainer = () => {
   return (
     <div>
       <Box display="flex" width="100%" justifyContent="center" mt="80px">
-        <Title>LOGO PLATFORMY</Title>
+        <Title>Hospitalshare</Title>
       </Box>
       <StepsHeader step={currentStep} />
       {currentStep === 0 && <ChooseAccountType setAccountType={handleAccountTypeSelect} />}
       {currentStep === 1 && accountType === 'hospital' && <HospitalForm handleNextStep={() => setCurrentStep(2)} />}
       {currentStep === 2 && accountType === 'hospital' && <HospitalConfirmation />}
+      <Box mt={24} textAlign="center">
+        <Paragraph>
+          {t("Already have an account?")}
+          <RouterLink to="/sign-in">
+            {t('Sign in')}
+          </RouterLink>
+        </Paragraph>
+      </Box>
     </div>
   );
 };

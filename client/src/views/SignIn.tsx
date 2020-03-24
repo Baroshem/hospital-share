@@ -7,6 +7,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Theme, Translation, Schema, Validation } from '@services';
 import { useAuthActions, useAuthState } from '@store/auth';
 import { Redirect } from 'react-router-dom';
+import { RouterLink } from '@components/atoms';
 
 type FormValues = {
   email: string;
@@ -41,7 +42,10 @@ export const SignInComponent = () => {
       </Button>
       <Box mt={24} textAlign="center">
         <Paragraph>
-          {t("Don't have an account?")} <a href="">{t('Register')}</a>
+          {t("Don't have an account?")} 
+          <RouterLink to="/sign-up">
+            {t('Register')}
+          </RouterLink>
         </Paragraph>
       </Box>
     </Form>
